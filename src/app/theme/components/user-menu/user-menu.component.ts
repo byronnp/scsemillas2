@@ -7,7 +7,7 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
   encapsulation: ViewEncapsulation.None,
 })
 export class UserMenuComponent implements OnInit {
-  public userImage = '../assets/img/users/user.jpg';
+  public userImage = '../assets/img/users/usuario.png';
   constructor() { }
 
   ngOnInit() {

@@ -11,7 +11,7 @@ import { MenuService } from '../menu/menu.service';
   providers: [ MenuService ]
 })
 export class SidenavComponent implements OnInit {
-  public userImage= '../assets/img/users/user.jpg';
+  public userImage= '../assets/img/users/usuario.png';
   public menuItems:Array<any>;
   public settings: Settings;
   constructor(public appSettings:AppSettings, public menuService:MenuService){

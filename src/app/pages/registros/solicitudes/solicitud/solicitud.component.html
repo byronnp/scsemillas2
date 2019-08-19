@@ -1,0 +1,25 @@
+<div fxLayout="column">
+  <div class="flex-p">
+    <mat-card class="p-0">
+      <div class="bg-primary text-center py-2">
+        <h2>solicitud works!</h2>
+      </div>
+      <form [formGroup]="solicitudForm" (ngSubmit)="onSubmit(solicitudForm.value)" fxLayout="row wrap" class="solicitudform-form p-1">
+        <div fxFlex="100" fxFlex.gt-sm="50" fxFlex.sm="0" class="p-1">
+          <mat-form-field appearance="outline">
+              <mat-label>Nombre del Sitio</mat-label>
+              <mat-select placeholder="Select Sitio" >
+                <mat-option *ngFor="let sitio of sitios" [value]="sitio">
+                  {{sitio.name}}
+                </mat-option>
+              </mat-select>
+          </mat-form-field>
+        </div>
+
+        <div fxFlex="100" class="p-1 text-center">
+            <button mat-raised-button color="primary" class="uppercase mx-1" type="submit">Aceptar</button>
+        </div>
+      </form>      
+    </mat-card>
+  </div>
+</div>

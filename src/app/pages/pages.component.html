@@ -9,25 +9,25 @@
                     <button *ngIf="settings.menu == 'vertical'" mat-icon-button (click)="toggleSidenav()">
                         <mat-icon>menu</mat-icon>
                     </button> 
-                    <button fxShow="false" fxShow.gt-xs *ngIf="settings.menu == 'vertical'" mat-icon-button (click)="settings.sidenavUserBlock = !settings.sidenavUserBlock">
+                    <!-- <button fxShow="false" fxShow.gt-xs *ngIf="settings.menu == 'vertical'" mat-icon-button (click)="settings.sidenavUserBlock = !settings.sidenavUserBlock">
                         <mat-icon>person</mat-icon>
-                    </button> 
+                    </button>  -->
                     <a *ngIf="settings.menu == 'horizontal'" mat-raised-button color="accent" routerLink="/" (click)="closeSubMenus()" class="small-logo">G</a>
-                    <a *ngIf="settings.menu == 'horizontal'" class="logo" routerLink="/" (click)="closeSubMenus()">GRADUS</a>  
+                    <a *ngIf="settings.menu == 'horizontal'" class="logo" routerLink="/" (click)="closeSubMenus()">SCSemillas</a>  
                 </div>            
                 <div fxLayout="row" fxLayoutAlign="end center">
                     <div fxLayout="row" fxLayoutAlign="start center" fxShow="false" fxShow.gt-xs class="search-bar">
                         <form method="get">
                             <input type="text" placeholder="Type to search..." class="mat-elevation-z3"  [class.show]="toggleSearchBar">
-                            <button mat-icon-button (click)="toggleSearchBar = !toggleSearchBar" type="button">
+                            <!-- <button mat-icon-button (click)="toggleSearchBar = !toggleSearchBar" type="button">
                                 <mat-icon>search</mat-icon>
-                            </button> 
+                            </button>  -->
                         </form>
                     </div>                
-                    <app-flags-menu fxShow="false" fxShow.gt-sm></app-flags-menu>
-                    <app-fullscreen></app-fullscreen> 
-                    <app-applications fxShow="false" fxShow.gt-sm></app-applications>
-                    <app-messages fxShow="false" fxShow.gt-xs></app-messages>
+                    <!-- <app-flags-menu fxShow="false" fxShow.gt-sm></app-flags-menu> -->
+                    <!-- <app-fullscreen></app-fullscreen>  -->
+                    <!-- <app-applications fxShow="false" fxShow.gt-sm></app-applications> -->
+                    <!-- <app-messages fxShow="false" fxShow.gt-xs></app-messages> -->
                     <app-user-menu></app-user-menu> 
                 </div>
             </div>
@@ -45,16 +45,16 @@
             <app-breadcrumb></app-breadcrumb>
             <router-outlet></router-outlet>    
         </div>
-
-        <div fxLayout="row" fxLayoutAlign="center center" class="options-icon" (click)="options.toggle()">
+        <!--  icono de configuraciones del framework  -->
+    <!--<div fxLayout="row" fxLayoutAlign="center center" class="options-icon" (click)="options.toggle()">
             <mat-icon>settings</mat-icon>
-        </div>
+        </div> -->
 
         <div #backToTop fxLayout="row" fxLayoutAlign="center center" class="back-to-top" (click)="scrollToTop()">
             <mat-icon>arrow_upward</mat-icon>
         </div>
-
-    </mat-sidenav-content>
+        <!-- menu de configuraciones -->
+    <!-- </mat-sidenav-content>
     
     <mat-sidenav #options position="end" class="options">        
        
@@ -122,4 +122,4 @@
 
     </mat-sidenav>
 
-</mat-sidenav-container>
+</mat-sidenav-container> -->

@@ -10,8 +10,7 @@ export const routes: Routes = [
         path: '', 
         component: PagesComponent, children: [
             { path: '', loadChildren: () => import('./pages/dashboard/dashboard.module').then(m => m.DashboardModule), data: { breadcrumb: 'Dashboard' } },
-            { path: 'registros', loadChildren: () => import('./pages/registros/registros.module').then(m => m.RegistrosModule), data: { breadcrumb: 'Registros' } },
-            { path: 'byron', loadChildren: () => import('./pages/byron/byron.module').then(m => m.ByronModule), data: { breadcrumb: 'Byron' } }
+            { path: 'registros', loadChildren: () => import('./pages/registros/registros.module').then(m => m.RegistrosModule), data: { breadcrumb: 'Registros' } }       
         ]
     },   
     { path: 'error', component: ErrorComponent, data: { breadcrumb: 'Error' } },

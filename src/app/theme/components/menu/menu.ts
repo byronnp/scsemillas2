@@ -3,8 +3,10 @@ import { Menu } from './menu.model';
 export const verticalMenuItems = [ 
     new Menu (1, 'Dashboard', '/', null, 'dashboard', null, false, 0),
     new Menu (2, 'Registros', '/registros', null, 'assignment', null, true, 0), 
-    new Menu (3, 'Areas', '/registros/areas', null, 'settings_overscan', null, false, 2),
-    // new Menu (2, 'Users', '/users', null, 'supervisor_account', null, false, 0), 
+    // new Menu (3, 'Areas', '/registros/areas', null, 'settings_overscan', null, false, 2),
+    new Menu (4, 'Usuarios', '/registros/usuarios', null, 'group', null, false, 2),
+    new Menu (5, 'Sitios', '/registros/sitios', null, 'settings_overscan', null, false, 2),
+    new Menu (6, 'Solicitudes', '/registros/solicitudes', null, 'assignment', null, false, 2), 
     // new Menu (3, 'UI Features', null, null, 'computer', null, true, 0),   
     // new Menu (4, 'Buttons', '/ui/buttons', null, 'keyboard', null, false, 3),  
     // new Menu (5, 'Cards', '/ui/cards', null, 'card_membership', null, false, 3), 
@@ -63,15 +65,17 @@ export const verticalMenuItems = [
     // new Menu (142, 'Level 3', null, null, 'folder_open', null, true, 141),
     // new Menu (143, 'Level 4', null, null, 'folder_open', null, true, 142),
     // new Menu (144, 'Level 5', null, 'http://themeseason.com', 'link', null, false, 143),
-    new Menu (199, 'Byron', '/byron', null , 'sort', null, false, 0), 
+    // new Menu (199, 'Byron', '/byron', null , 'sort', null, false, 0), 
     //new Menu (200, 'External Link', null, 'http://themeseason.com', 'open_in_new', '_blank', false, 0)
 ]
 
 export const horizontalMenuItems = [ 
     new Menu (1, 'Dashboard', '/', null, 'dashboard', null, false, 0),
-    new Menu (2, 'Registros', '/registros', null, 'supervisor_account', null, true, 0), 
-    new Menu (3, 'Areas', '/registros/areas', null, 'keyboard', null, false, 2),
-    // new Menu (2, 'Users', '/users', null, 'supervisor_account', null, false, 0), 
+    new Menu (2, 'Registros', '/registros', null, 'supervisor_account', null, true, 0),
+    // new Menu (3, 'Areas', '/registros/areas', null, 'keyboard', null, false, 2),
+    new Menu (4, 'Usuarios', '/registros/usuarios', null, 'group', null, false, 2),
+    new Menu (5, 'Sitios', '/registros/sitios', null, 'settings_overscan', null, false, 2),
+    new Menu (6, 'Solicitudes', '/registros/solicitudes', null, 'assignment', null, false, 2), 
     // new Menu (3, 'UI Features', null, null, 'computer', null, true, 0),   
     // new Menu (4, 'Buttons', '/ui/buttons', null, 'keyboard', null, false, 3),  
     // new Menu (5, 'Cards', '/ui/cards', null, 'card_membership', null, false, 3), 
@@ -124,6 +128,6 @@ export const horizontalMenuItems = [
     // new Menu (50, 'Projects', '/profile/projects', null, 'note', null, false, 49),    
     // new Menu (51, 'User Info', '/profile/user-info', null, 'perm_contact_calendar', null, false, 49),
     // new Menu (55, 'Schedule', '/schedule', null, 'event', null, false, 40),
-    new Menu (199, 'Byron', '/byron', null, 'sort', null, false, 0),
+    // new Menu (199, 'Byron', '/byron', null, 'sort', null, false, 0),
     //new Menu (200, 'External Link', null, 'http://themeseason.com', 'open_in_new', '_blank', false, 40)
 ]

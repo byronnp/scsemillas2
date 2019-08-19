@@ -1,0 +1,117 @@
+<div fxLayout="column">
+  <div class="flex-p">
+      <mat-card class="p-0">
+          <div class="bg-primary text-center py-2">
+            <h2>sitios</h2>
+          </div>
+          <form [formGroup]="sitioForm" (ngSubmit)="onSubmit(sitioForm.value)" fxLayout="row wrap" class="sitioform-form p-1">
+              <div fxFlex="100" fxFlex.gt-sm="50" fxFlex.sm="0" class="p-1">
+                  <mat-form-field appearance="outline">
+                      <mat-label>Nombre del Sitio</mat-label>
+                      <input matInput autocomplete="off" placeholder="Nombre del Sitio"  type="text">
+                      <!-- <mat-error *ngIf="sitioForm.controls.firstname.errors?.required">First Name is required</mat-error> -->
+                  </mat-form-field>                
+              </div>
+              <div fxFlex="100" fxFlex.gt-sm="40" fxFlex.sm="0" class="p-1">
+                  
+                  <mat-form-field appearance="outline">
+                      <mat-label>Superficie</mat-label>
+                      <input matInput autocomplete="off" placeholder="Superficie"  type="text">
+                      <!-- <mat-error *ngIf="sitioForm.controls.firstname.errors?.required">First Name is required</mat-error> -->
+                  </mat-form-field> 
+              </div>
+              
+              <div fxFlex="100" fxFlex.gt-sm="33.3" fxFlex.sm="50" class="p-1">
+                <mat-form-field appearance="outline">
+                  <mat-label>Provincia</mat-label>
+                  <mat-select placeholder="Select Provincia" >
+                    <mat-option *ngFor="let provincia of provincias" [value]="provincia">
+                      {{provincia.name}}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+              <div fxFlex="100" fxFlex.gt-sm="33.3" fxFlex.sm="50" class="p-1">
+                  <mat-form-field appearance="outline">
+                    <mat-label>Cantón</mat-label>
+                    <mat-select placeholder="Select Cantón" >
+                      <mat-option *ngFor="let provincia of provincias" [value]="provincia">
+                        {{provincia.name}}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+                <div fxFlex="100" fxFlex.gt-sm="33.3" fxFlex.sm="50" class="p-1">
+                    <mat-form-field appearance="outline">
+                      <mat-label>Parroquia</mat-label>
+                      <mat-select placeholder="Select Parroquia" >
+                        <mat-option *ngFor="let provincia of provincias" [value]="provincia">
+                          {{provincia.name}}
+                        </mat-option>
+                      </mat-select>
+                    </mat-form-field>
+                </div>
+                <div fxFlex="100" fxFlex.gt-sm="80" fxFlex.sm="0" class="p-1">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Dirección</mat-label>
+                        <textarea matInput placeholder="Ingrese Dirección"></textarea>
+                        <!-- <mat-error *ngIf="sitioForm.controls.firstname.errors?.required">First Name is required</mat-error> -->
+                    </mat-form-field>            
+                </div>
+                <div fxFlex="100" fxFlex.gt-sm="80" fxFlex.sm="0" class="p-1">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Referencia</mat-label>
+                        <input matInput autocomplete="off" placeholder="Referencia"  type="text">
+                        <!-- <mat-error *ngIf="sitioForm.controls.firstname.errors?.required">First Name is required</mat-error> -->
+                    </mat-form-field>            
+                </div>
+                <div fxFlex="100" fxFlex.gt-sm="25" fxFlex.sm="0" class="p-1">            
+                    <mat-form-field appearance="outline">
+                        <mat-label>Latitud</mat-label>
+                        <input matInput autocomplete="off" placeholder="Latitud"  type="text">
+                        <!-- <mat-error *ngIf="sitioForm.controls.firstname.errors?.required">First Name is required</mat-error> -->
+                    </mat-form-field> 
+                </div>
+                <div fxFlex="100" fxFlex.gt-sm="25" fxFlex.sm="0" class="p-1">            
+                    <mat-form-field appearance="outline">
+                        <mat-label>Longitud</mat-label>
+                        <input matInput autocomplete="off" placeholder="Longitud"  type="text">
+                        <!-- <mat-error *ngIf="sitioForm.controls.firstname.errors?.required">First Name is required</mat-error> -->
+                    </mat-form-field> 
+                </div>
+                <div fxFlex="100" fxFlex.gt-sm="25" fxFlex.sm="50" class="p-1">
+                    <mat-form-field appearance="outline">
+                      <mat-label>Hemisferio</mat-label>
+                      <mat-select placeholder="Select Zona" >
+                        <mat-option *ngFor="let hemisferio of hemisferios" [value]="hemisferio">
+                          {{hemisferio.name}}
+                        </mat-option>
+                      </mat-select>
+                    </mat-form-field>
+                </div>
+                <div fxFlex="100" fxFlex.gt-sm="25" fxFlex.sm="50" class="p-1">
+                    <mat-form-field appearance="outline">
+                      <mat-label>Zona</mat-label>
+                      <mat-select placeholder="Select Zona" >
+                        <mat-option *ngFor="let zona of zonas" [value]="zona">
+                          {{zona.name}}
+                        </mat-option>
+                      </mat-select>
+                    </mat-form-field>
+                </div>
+                <div fxFlex="100" fxFlex.gt-sm="25" fxFlex.sm="50" class="p-1">
+                  <input placeholder="Adjuntar"  type="file">
+                </div>               
+
+              <div fxFlex="100" class="p-1 text-center">
+                <button mat-raised-button color="primary" class="uppercase mx-1" type="submit">Aceptar</button>
+              </div>
+          </form>
+      </mat-card>
+  </div>
+</div>
+
+
+
+
+
