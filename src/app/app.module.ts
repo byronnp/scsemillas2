@@ -24,6 +24,7 @@ import { PagesComponent } from './pages/pages.component';
 import { NotFoundComponent } from './pages/errors/not-found/not-found.component';
 import { ErrorComponent } from './pages/errors/error/error.component';
 import { AppSettings } from './app.settings';
+import { AppConfiguracion } from '../assets/configuracion/configuracion';
 
 import { SidenavComponent } from './theme/components/sidenav/sidenav.component';
 import { VerticalMenuComponent } from './theme/components/menu/vertical-menu/vertical-menu.component';
@@ -34,6 +35,8 @@ import { FullScreenComponent } from './theme/components/fullscreen/fullscreen.co
 import { ApplicationsComponent } from './theme/components/applications/applications.component';
 import { MessagesComponent } from './theme/components/messages/messages.component';
 import { UserMenuComponent } from './theme/components/user-menu/user-menu.component';
+import { AlertComponent } from './theme/dialogs/alert/alert.component';
+
 
 
 
@@ -68,13 +71,14 @@ import { UserMenuComponent } from './theme/components/user-menu/user-menu.compon
     FullScreenComponent,
     ApplicationsComponent,
     MessagesComponent,
-    UserMenuComponent
+    UserMenuComponent,
+    AlertComponent
   ],
   entryComponents:[
-    VerticalMenuComponent
+    VerticalMenuComponent,AlertComponent
   ],
   providers: [ 
-    AppSettings,
+    AppSettings,AppConfiguracion,
     { provide: PERFECT_SCROLLBAR_CONFIG, useValue: DEFAULT_PERFECT_SCROLLBAR_CONFIG },
     { provide: OverlayContainer, useClass: CustomOverlayContainer }
   ],

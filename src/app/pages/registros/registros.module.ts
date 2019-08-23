@@ -9,6 +9,9 @@ import { SitiosComponent } from './sitios/sitios.component';
 import { SitiosformComponent } from './sitios/sitiosform/sitiosform.component';
 import { SolicitudesComponent } from './solicitudes/solicitudes.component';
 import { SolicitudComponent } from './solicitudes/solicitud/solicitud.component';
+import { HttpClientModule } from '@angular/common/http';
+import { SitiosService } from './sitios/sitios.service';
+
 
 export const routes = [
   { path: 'sitios', component: SitiosComponent, data: { breadcrumb: 'Sitios' } },
@@ -30,7 +33,9 @@ export const routes = [
     CommonModule,
     RouterModule.forChild(routes),
     ReactiveFormsModule,
-    SharedModule
-  ]
+    SharedModule,
+    HttpClientModule
+  ],
+  providers: [SitiosService]
 })
 export class RegistrosModule { }

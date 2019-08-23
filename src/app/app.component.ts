@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 import { AppSettings } from './app.settings';
 import { Settings } from './app.settings.model';
 

@@ -2,114 +2,146 @@
   <div class="flex-p">
       <mat-card class="p-0">
           <div class="bg-primary text-center py-2">
-            <h2>sitios</h2>
+            <h2>Registro de Sitio</h2>
           </div>
           <form [formGroup]="sitioForm" (ngSubmit)="onSubmit(sitioForm.value)" fxLayout="row wrap" class="sitioform-form p-1">
+              <input type="hidden" [(ngModel)]="sitio.sitid" formControlName="sitid">
               <div fxFlex="100" fxFlex.gt-sm="50" fxFlex.sm="0" class="p-1">
                   <mat-form-field appearance="outline">
-                      <mat-label>Nombre del Sitio</mat-label>
-                      <input matInput autocomplete="off" placeholder="Nombre del Sitio"  type="text">
-                      <!-- <mat-error *ngIf="sitioForm.controls.firstname.errors?.required">First Name is required</mat-error> -->
+                      <mat-label>Nombre del Sitio</mat-label>                      
+                      <input matInput autocomplete="off" placeholder="Nombre del Sitio" formControlName="sitnombre" [(ngModel)]="sitio.sitnombre"  type="text" >
+                      <mat-error *ngIf="sitioForm.controls.sitnombre.errors?.required">El nombre del sitio es requerido</mat-error>
                   </mat-form-field>                
               </div>
-              <div fxFlex="100" fxFlex.gt-sm="40" fxFlex.sm="0" class="p-1">
+              <div fxFlex="100" fxFlex.gt-sm="50" fxFlex.sm="0" class="p-1">
                   
                   <mat-form-field appearance="outline">
-                      <mat-label>Superficie</mat-label>
-                      <input matInput autocomplete="off" placeholder="Superficie"  type="text">
-                      <!-- <mat-error *ngIf="sitioForm.controls.firstname.errors?.required">First Name is required</mat-error> -->
+                      <mat-label>Superficie (Has.)</mat-label>
+                      <input matInput autocomplete="off" placeholder="Superficie" formControlName="sitsuperficietotal" [(ngModel)]="sitio.sitsuperficietotal"  type="text">
+                      <mat-error *ngIf="sitioForm.controls.sitsuperficietotal.errors?.required">La superficie es requerida</mat-error>
+                      <mat-error *ngIf="sitioForm.controls.sitsuperficietotal.errors?.pattern">Ingrese valores númericos</mat-error>
+                      <mat-error *ngIf="sitioForm.controls.sitsuperficietotal.errors?.maxlength">Ingreso maximo 5 caracteres</mat-error>
                   </mat-form-field> 
               </div>
               
               <div fxFlex="100" fxFlex.gt-sm="33.3" fxFlex.sm="50" class="p-1">
                 <mat-form-field appearance="outline">
                   <mat-label>Provincia</mat-label>
-                  <mat-select placeholder="Select Provincia" >
-                    <mat-option *ngFor="let provincia of provincias" [value]="provincia">
-                      {{provincia.name}}
+                  <mat-select placeholder="Select Provincia" formControlName="codprovincia" [(ngModel)]="select_prov" (ngModelChange)="obtenerCantones($event)">
+                    <mat-option *ngFor="let provincia of provincias" [value]="provincia.ubiId">
+                      {{provincia.ubiNombre}}
                     </mat-option>
                   </mat-select>
+                  <mat-error *ngIf="sitioForm.controls.codprovincia.errors?.required">La provincia es requerida</mat-error>
                 </mat-form-field>
               </div>
               <div fxFlex="100" fxFlex.gt-sm="33.3" fxFlex.sm="50" class="p-1">
                   <mat-form-field appearance="outline">
                     <mat-label>Cantón</mat-label>
-                    <mat-select placeholder="Select Cantón" >
-                      <mat-option *ngFor="let provincia of provincias" [value]="provincia">
-                        {{provincia.name}}
+                    <mat-select placeholder="Select Cantón" formControlName="codcanton" [(ngModel)]="select_can" (ngModelChange)="obtenerParroquias($event)">
+                      <mat-option *ngFor="let canton of cantones" [value]="canton.ubiId">
+                        {{canton.ubiNombre}}
                       </mat-option>
                     </mat-select>
+                    <mat-error *ngIf="sitioForm.controls.codcanton.errors?.required">El cantón es requerido</mat-error>
                   </mat-form-field>
                 </div>
                 <div fxFlex="100" fxFlex.gt-sm="33.3" fxFlex.sm="50" class="p-1">
                     <mat-form-field appearance="outline">
                       <mat-label>Parroquia</mat-label>
-                      <mat-select placeholder="Select Parroquia" >
-                        <mat-option *ngFor="let provincia of provincias" [value]="provincia">
-                          {{provincia.name}}
+                      <mat-select placeholder="Select Parroquia" formControlName="ubicacionid" [(ngModel)]="select_par">
+                        <mat-option *ngFor="let parroquia of parroquias" [value]="parroquia.ubiId">
+                          {{parroquia.ubiNombre}}
                         </mat-option>
                       </mat-select>
+                      <mat-error *ngIf="sitioForm.controls.ubicacionid.errors?.required">La parroquia es requerida</mat-error>
                     </mat-form-field>
                 </div>
-                <div fxFlex="100" fxFlex.gt-sm="80" fxFlex.sm="0" class="p-1">
+                <div fxFlex="100" fxFlex.gt-sm="50" fxFlex.sm="0" class="p-1">
                     <mat-form-field appearance="outline">
                         <mat-label>Dirección</mat-label>
-                        <textarea matInput placeholder="Ingrese Dirección"></textarea>
-                        <!-- <mat-error *ngIf="sitioForm.controls.firstname.errors?.required">First Name is required</mat-error> -->
+                        <textarea matInput placeholder="Ingrese Dirección" formControlName="sitdomicilio" [(ngModel)]="sitio.sitdomicilio" ></textarea>
+                        <mat-error *ngIf="sitioForm.controls.sitdomicilio.errors?.required">Ingrese la direccion del sitio</mat-error>
                     </mat-form-field>            
                 </div>
-                <div fxFlex="100" fxFlex.gt-sm="80" fxFlex.sm="0" class="p-1">
+                <div fxFlex="100" fxFlex.gt-sm="50" fxFlex.sm="0" class="p-1">
                     <mat-form-field appearance="outline">
                         <mat-label>Referencia</mat-label>
-                        <input matInput autocomplete="off" placeholder="Referencia"  type="text">
-                        <!-- <mat-error *ngIf="sitioForm.controls.firstname.errors?.required">First Name is required</mat-error> -->
+                        <textarea matInput placeholder="Ingrese Referencia" formControlName="sitreferencia" [(ngModel)]="sitio.sitreferencia"></textarea>                        
+                        <mat-error *ngIf="sitioForm.controls.sitreferencia.errors?.required">Ingrese una referencia</mat-error>
                     </mat-form-field>            
+                </div>
+                <div fxFlex="100" fxFlex.gt-sm="50" fxFlex.sm="0" class="p-1">
+                  <mat-form-field appearance="outline">
+                    <mat-label>Telefóno</mat-label>
+                    <input type="text" matInput autocomplete="off" placeholder="Ingrese Telefono fijo" formControlName="sitcontacto" [(ngModel)]="sitio.sitcontacto">
+                    <mat-error *ngIf="sitioForm.controls.sitcontacto.errors?.required">ingrese un número de Telefono fijo</mat-error>                    
+                    <mat-error *ngIf="sitioForm.controls.sitcontacto.errors?.maxlength">Maximo 10 caracteres</mat-error>
+                    <mat-error *ngIf="sitioForm.controls.sitcontacto.errors?.pattern">Solo ingrese números</mat-error>
+                  </mat-form-field>
+                </div>
+                <div fxFlex="100" fxFlex.gt-sm="50" fxFlex.sm="0" class="p-1">
+                  <mat-form-field appearance="outline">
+                    <mat-label>Telefono celular</mat-label>
+                    <input type="text" matInput autocomplete="off" placeholder="Ingrese número celular" formControlName="sitcontactocel" [(ngModel)]="sitio.sitcontactocel">
+                    <mat-error *ngIf="sitioForm.controls.sitcontactocel.errors?.required">Ingrese un número celular</mat-error>
+                    <mat-error *ngIf="sitioForm.controls.sitcontactocel.errors?.maxlength">Maximo 10 caracteres</mat-error>
+                    <mat-error *ngIf="sitioForm.controls.sitcontactocel.errors?.pattern">Solo ingrese números</mat-error>
+                  </mat-form-field>
                 </div>
                 <div fxFlex="100" fxFlex.gt-sm="25" fxFlex.sm="0" class="p-1">            
                     <mat-form-field appearance="outline">
                         <mat-label>Latitud</mat-label>
-                        <input matInput autocomplete="off" placeholder="Latitud"  type="text">
-                        <!-- <mat-error *ngIf="sitioForm.controls.firstname.errors?.required">First Name is required</mat-error> -->
+                        <input matInput autocomplete="off" placeholder="Latitud"  type="text" formControlName="sitlatitud" [(ngModel)]="sitio.sitlatitud">
+                        <mat-error *ngIf="sitioForm.controls.sitlatitud.errors?.required">Ingrese la latitud</mat-error>
                     </mat-form-field> 
                 </div>
                 <div fxFlex="100" fxFlex.gt-sm="25" fxFlex.sm="0" class="p-1">            
                     <mat-form-field appearance="outline">
                         <mat-label>Longitud</mat-label>
-                        <input matInput autocomplete="off" placeholder="Longitud"  type="text">
-                        <!-- <mat-error *ngIf="sitioForm.controls.firstname.errors?.required">First Name is required</mat-error> -->
+                        <input type="text" matInput autocomplete="off" placeholder="Longitud" formControlName="sitlongitud" [(ngModel)]="sitio.sitlongitud">
+                        <mat-error *ngIf="sitioForm.controls.sitlongitud.errors?.required">Ingrese la latitud</mat-error>
                     </mat-form-field> 
                 </div>
                 <div fxFlex="100" fxFlex.gt-sm="25" fxFlex.sm="50" class="p-1">
                     <mat-form-field appearance="outline">
                       <mat-label>Hemisferio</mat-label>
-                      <mat-select placeholder="Select Zona" >
-                        <mat-option *ngFor="let hemisferio of hemisferios" [value]="hemisferio">
+                      <mat-select placeholder="Select Hemisferio" formControlName="sithemisferio" [(ngModel)]="sitio.sithemisferio">
+                        <mat-option *ngFor="let hemisferio of hemisferios" [value]="hemisferio.id">
                           {{hemisferio.name}}
                         </mat-option>
                       </mat-select>
+                      <mat-error *ngIf="sitioForm.controls.sithemisferio.errors?.required">Seleccione el hemisferio</mat-error>
                     </mat-form-field>
                 </div>
                 <div fxFlex="100" fxFlex.gt-sm="25" fxFlex.sm="50" class="p-1">
                     <mat-form-field appearance="outline">
                       <mat-label>Zona</mat-label>
-                      <mat-select placeholder="Select Zona" >
-                        <mat-option *ngFor="let zona of zonas" [value]="zona">
+                      <mat-select placeholder="Select Zona" formControlName="sitzona" [(ngModel)] = "sitio.sitzona">
+                        <mat-option *ngFor="let zona of zonas" [value]="zona.id">
                           {{zona.name}}
                         </mat-option>
                       </mat-select>
+                      <mat-error *ngIf="sitioForm.controls.sitzona.errors?.required">Seleccione la zona</mat-error>
                     </mat-form-field>
                 </div>
                 <div fxFlex="100" fxFlex.gt-sm="25" fxFlex.sm="50" class="p-1">
                   <input placeholder="Adjuntar"  type="file">
                 </div>               
 
-              <div fxFlex="100" class="p-1 text-center">
-                <button mat-raised-button color="primary" class="uppercase mx-1" type="submit">Aceptar</button>
+              <div fxFlex="100" class="p-1 text-center" >
+                <button mat-raised-button color="primary" *ngIf="!sitio.sitid; else elseBlock" class="uppercase mx-1"  type="submit" >Guardar</button>
+                <ng-template #elseBlock>
+                    <button mat-raised-button color="primary" class="uppercase mx-1" type="submit">Actualizar</button>
+                  </ng-template>
               </div>
+              
           </form>
       </mat-card>
   </div>
 </div>
+
+
 
 
 
