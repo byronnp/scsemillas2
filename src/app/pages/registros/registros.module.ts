@@ -10,7 +10,7 @@ import { SitiosformComponent } from './sitios/sitiosform/sitiosform.component';
 import { SolicitudesComponent } from './solicitudes/solicitudes.component';
 import { SolicitudComponent } from './solicitudes/solicitud/solicitud.component';
 import { HttpClientModule } from '@angular/common/http';
-import { SitiosService } from './sitios/sitios.service';
+import { ServiciosService } from '../servicios/servicios.service';
 
 
 export const routes = [
@@ -36,6 +36,6 @@ export const routes = [
     SharedModule,
     HttpClientModule
   ],
-  providers: [SitiosService]
+  providers: [ServiciosService]
 })
 export class RegistrosModule { }

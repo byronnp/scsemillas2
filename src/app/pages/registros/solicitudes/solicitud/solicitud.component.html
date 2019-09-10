@@ -1,25 +1,96 @@
 <div fxLayout="column">
-  <div class="flex-p">
-    <mat-card class="p-0">
-      <div class="bg-primary text-center py-2">
-        <h2>solicitud works!</h2>
-      </div>
-      <form [formGroup]="solicitudForm" (ngSubmit)="onSubmit11(solicitudForm.value)" fxLayout="row wrap" class="solicitudform-form p-1">
-        <div fxFlex="100" fxFlex.gt-sm="50" fxFlex.sm="0" class="p-1">
-          <mat-form-field appearance="outline">
-              <mat-label>Nombre del Sitio</mat-label>
-              <mat-select placeholder="Select Sitio" >
-                <mat-option *ngFor="let sitio of sitios" [value]="sitio">
-                  {{sitio.name}}
-                </mat-option>
-              </mat-select>
-          </mat-form-field>
-        </div>
+    <div class="flex-p">
+        <mat-card class="p-0">
+            <div class="bg-primary text-center py-2">
+                <h2>Registro de Solicitud</h2>
+            </div>
+            <form [formGroup]="solicitudForm" (ngSubmit)="Submit(solicitudForm.value)" fxLayout="row wrap" class="solicitudform-form p-1">
+                <input type="hidden" [(ngModel)]="solicitud.solid" formControlName="solid">
+                <div fxFlex="100" fxFlex.gt-sm="100" fxFlex.sm="50" class="p-1">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Sitio</mat-label>
+                        <mat-select placeholder="Select Sitio" [(ngModel)]="solicitud.sitid" formControlName="sitid">
+                            <mat-option *ngFor="let sitio of sitios" [value]="sitio.sitid">
+                                {{sitio.sitnombre}}
+                            </mat-option>
+                        </mat-select>
+                        <!-- <mat-error *ngIf="sitioForm.controls.codprovincia.errors?.required">La provincia es requerida</mat-error> -->
+                    </mat-form-field>
+                </div>
+                <div fxFlex="100" fxFlex.gt-sm="25" fxFlex.sm="50" class="p-1">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Cultivo</mat-label>
+                        <mat-select placeholder="Select cultivo" [(ngModel)]="solicitud.cultivoid" formControlName="cultivoid">
+                            <mat-option *ngFor="let cultivo of cultivos" [value]="cultivo.id">
+                                {{cultivo.name}}
+                            </mat-option>
+                        </mat-select>
+                        <!-- <mat-error *ngIf="sitioForm.controls.codprovincia.errors?.required">La provincia es requerida</mat-error> -->
+                    </mat-form-field>
+                </div>
+                <div fxFlex="100" fxFlex.gt-sm="25" fxFlex.sm="50" class="p-1">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Variedad</mat-label>
+                        <mat-select placeholder="Select cultivo" [(ngModel)]="solicitud.catculid" formControlName="catculid">
+                            <mat-option *ngFor="let variedad of varidades" [value]="variedad.id">
+                                {{variedad.name}}
+                            </mat-option>
+                        </mat-select>
+                        <!-- <mat-error *ngIf="sitioForm.controls.codprovincia.errors?.required">La provincia es requerida</mat-error> -->
+                    </mat-form-field>
+                </div>
+                <div fxFlex="100" fxFlex.gt-sm="25" fxFlex.sm="50" class="p-1">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Categoria</mat-label>
+                        <mat-select placeholder="Select Categoria" [(ngModel)]="solicitud.categid" formControlName="categid">
+                            <mat-option *ngFor="let categoria of categorias" [value]="categoria.id">
+                                {{categoria.name}}
+                            </mat-option>
+                        </mat-select>
+                        <!-- <mat-error *ngIf="sitioForm.controls.codprovincia.errors?.required">La provincia es requerida</mat-error> -->
+                    </mat-form-field>
+                </div>
+                <div fxFlex="100" fxFlex.gt-sm="25" fxFlex.sm="50" class="p-1">
+                    <mat-form-field appearance="outline">
+                        <mat-label>No. Marbete</mat-label>
+                        <mat-select placeholder="Select cultivo" [(ngModel)]="solicitud.marbeteid" formControlName="marbeteid">
+                            <mat-option *ngFor="let marbete of marbetes" [value]="marbete.id">
+                                {{marbete.name}}
+                            </mat-option>
+                        </mat-select>
+                        <!-- <mat-error *ngIf="sitioForm.controls.codprovincia.errors?.required">La provincia es requerida</mat-error> -->
+                    </mat-form-field>
+                </div>
+                <div fxFlex="100" fxFlex.gt-sm="50" fxFlex.sm="0" class="p-1">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Cédula multiplicador</mat-label>
+                        <input type="text" matInput autocomplete="off" [(ngModel)]="solicitud.solcimultiplicador" placeholder="Cédula del multiplicador" formControlName="solcimultiplicador">
+                        <mat-error *ngIf="solicitudForm.controls.solcimultiplicador.errors?.required">La cedula del multiplicador es requerido</mat-error>
+                    </mat-form-field>
+                </div>
+                <div fxFlex="100" fxFlex.gt-sm="100" fxFlex.sm="0" class="p-1">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Nombres y apellidos multiplicador</mat-label>
+                        <input matInput autocomplete="off" placeholder="Nombres del multiplicador" [(ngModel)]="solicitud.solnombremultiplicador" formControlName="solnombremultiplicador" type="text">
+                        <mat-error *ngIf="solicitudForm.controls.solnombremultiplicador.errors?.required">Nombre multiplicador es requerido</mat-error>
+                    </mat-form-field>
+                </div>
 
-        <div fxFlex="100" class="p-1 text-center">
-            <button mat-raised-button color="primary" class="uppercase mx-1" type="submit">Aceptar</button>
-        </div>
-      </form>      
-    </mat-card>
-  </div>
+                <div fxFlex="100" fxFlex.gt-sm="50" fxFlex.sm="0" class="p-1">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Telefono</mat-label>
+                        <input matInput autocomplete="off" placeholder="Telefono del multiplicador" [(ngModel)]="solicitud.soltelefonomultiplicador" formControlName="soltelefonomultiplicador" type="text">
+                        <mat-error *ngIf="solicitudForm.controls.soltelefonomultiplicador.errors?.required">telefono del multiplicador es requerido</mat-error>
+                    </mat-form-field>
+                </div>
+
+                <div fxFlex="100" class="p-1 text-center">
+                    <button mat-raised-button color="primary" *ngIf="!solicitud.solid; else elseBlock" class="uppercase mx-1" type="submit">Guardar</button>
+                    <ng-template #elseBlock>
+                        <button mat-raised-button color="primary" class="uppercase mx-1" type="submit">Actualizar</button>
+                    </ng-template>
+                </div>
+            </form>
+        </mat-card>
+    </div>
 </div>

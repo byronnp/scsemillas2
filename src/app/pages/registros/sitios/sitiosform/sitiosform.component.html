@@ -6,6 +6,7 @@
           </div>
           <form [formGroup]="sitioForm" (ngSubmit)="onSubmit(sitioForm.value)" fxLayout="row wrap" class="sitioform-form p-1">
               <input type="hidden" [(ngModel)]="sitio.sitid" formControlName="sitid">
+              <input type="hidden" formControlName="sitperidcrea">
               <div fxFlex="100" fxFlex.gt-sm="50" fxFlex.sm="0" class="p-1">
                   <mat-form-field appearance="outline">
                       <mat-label>Nombre del Sitio</mat-label>                      

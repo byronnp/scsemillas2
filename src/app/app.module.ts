@@ -36,6 +36,7 @@ import { ApplicationsComponent } from './theme/components/applications/applicati
 import { MessagesComponent } from './theme/components/messages/messages.component';
 import { UserMenuComponent } from './theme/components/user-menu/user-menu.component';
 import { AlertComponent } from './theme/dialogs/alert/alert.component';
+import { ConfirmComponent } from './theme/dialogs/confirm/confirm.component';
 
 
 
@@ -72,10 +73,11 @@ import { AlertComponent } from './theme/dialogs/alert/alert.component';
     ApplicationsComponent,
     MessagesComponent,
     UserMenuComponent,
-    AlertComponent
+    AlertComponent,
+    ConfirmComponent
   ],
   entryComponents:[
-    VerticalMenuComponent,AlertComponent
+    VerticalMenuComponent,AlertComponent,ConfirmComponent
   ],
   providers: [ 
     AppSettings,AppConfiguracion,

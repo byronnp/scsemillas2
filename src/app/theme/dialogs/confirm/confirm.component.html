@@ -1,0 +1,11 @@
+<div mat-dialog-title align ="center">
+  <h5>Confirmación</h5>
+</div>
+<div mat-dialog-content align="center">  
+  <p><i class="material-icons">{{ data.icono }}</i></p>
+  <p>{{data.mensaje}}</p>  
+</div>
+<div mat-dialog-actions align="center">
+  <button mat-raised-button color="primary" class="m-1" tabindex="1" (click)="aceptarC()">Aceptar</button>
+  <button mat-raised-button color="primary" class="m-1" tabindex="1" (click)="cerrarC()">Cancelar</button>
+</div>

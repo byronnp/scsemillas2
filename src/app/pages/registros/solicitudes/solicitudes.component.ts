@@ -4,6 +4,9 @@ import { Settings } from '../../../app.settings.model';
 import {MatTableDataSource} from '@angular/material/table';
 import { Router } from '@angular/router';
 
+import { MatSort, MatGridTileHeaderCssMatStyler } from '@angular/material';
+import { ServiciosService } from '../../servicios/servicios.service';
+
 @Component({
   selector: 'app-solicitudes',
   templateUrl: './solicitudes.component.html',
@@ -13,14 +16,24 @@ export class SolicitudesComponent implements OnInit {
 
   public page:any;
   public settings: Settings;
-  displayedColumns: string[] = ['id', 'nombre', 'superficie', 'provincia'];
-  dataSource = new MatTableDataSource<PeriodicElement>(ELEMENT_DATA);
-
-  constructor(private router: Router) { }
-
+  displayedColumns: string[] = ['id', 'sitio', 'cultivo', 'marbete','acciones'];
+  dataSource : any;
+  resultsLength = 0;
+  isLoadingResults = true;
+  isRateLimitReached = false;
+  total_count: number;
+  // dataSource = new MatTableDataSource<PeriodicElement>(ELEMENT_DATA);
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
+  @ViewChild(MatSort, {static: false}) sort: MatSort;
+
+  constructor(private router: Router,private ServicioApi : ServiciosService,) {
+    this.dataSource = new MatTableDataSource();
+   }
+
+
   ngOnInit() {
     this.dataSource.paginator = this.paginator;
+    this.obtenerSolicitudes();
   }
 
    //evento de filtro sobre la tabla
@@ -33,7 +46,21 @@ export class SolicitudesComponent implements OnInit {
   }
 
   goToPageSo(pagenaName : string){
-    this.router.navigate(['registros/solicitudes/solicitud']);
+    this.router.navigate(['registros/solicitudes/'+pagenaName]);
+  }
+
+  obtenerSolicitudes(){
+     this.ServicioApi.getSolicitudes().subscribe(result => {
+        console.log(result);
+        this.dataSource = new MatTableDataSource();
+        this.dataSource.data = result;
+        this.dataSource.sort = this.sort;
+        this.dataSource.paginator = this.paginator;
+        this.isLoadingResults = true;
+        this.isRateLimitReached = true;
+        this.resultsLength = this.dataSource.data;
+
+     }); 
   }
 
 }
